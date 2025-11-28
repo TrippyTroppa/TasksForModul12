@@ -12,13 +12,19 @@ namespace TasksForModul12
         {
         }
 
-        static void Algoritm()
+        static void Condition()
         {
-            Console.WriteLine("Enter your name..");
-            string name = Console.ReadLine();
-            string greetings = $"Hello, {name}";
-            Console.WriteLine(greetings);
-            return;
+            Console.WriteLine("Enter your age");
+            int age = Int32.Parse(Console.ReadLine());
+
+            if (age > 13)
+            {
+                Console.WriteLine("Registration successful");
+            }
+            else
+            {
+                Console.WriteLine("If your age under 14, you can not be registered");
+            }
         }
     }
 }
