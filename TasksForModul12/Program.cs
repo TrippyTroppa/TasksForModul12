@@ -10,20 +10,15 @@ namespace TasksForModul12
     {
         static void Main(string[] args)
         {
-            
         }
 
-        static void FillArray()
+        static void Algoritm()
         {
-            Console.WriteLine("Enter the number of array elements...");
-            int count = Convert.ToInt32(Console.ReadLine());
-            var array = new string [count];
-
-            for (int i = 0; i < count; i++)
-            {
-                array [i] = Console.ReadLine();
-            }
-
+            Console.WriteLine("Enter your name..");
+            string name = Console.ReadLine();
+            string greetings = $"Hello, {name}";
+            Console.WriteLine(greetings);
+            return;
         }
     }
 }
