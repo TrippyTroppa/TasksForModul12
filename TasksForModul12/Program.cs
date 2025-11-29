@@ -11,65 +11,29 @@ namespace TasksForModul12
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Hello!\n Please enter your Login...");
+        }
 
-            string login = Console.ReadLine(); 
+        static void GetPageForUser(User user)
+        {
+            if (!user.LoggedIn)
+                return;
+            Console.WriteLine("User logged in");
 
-            User user = GetUserByLogin(login);
+            if (!user.HasAccessToSection)
+                return;
+            Console.WriteLine("User has access to that section");
 
-            if (user != null)
+            if (user.HasUnseenNews)
             {
-                Console.WriteLine($"Hello, {user.Name}");
-
-                if (!user.IsPremium)
-                {
-                    Console.WriteLine("Unfortunately, you don't have premium subscription :( ");
-                    ShowAds();
-                }
-                else
-                {
-                    Console.WriteLine("We glad to see you! There will be no ads here!");
-                }
+                ShowNews();
             }
-            else
+
+            if (user.HasAdminRights)
             {
-                Console.WriteLine($"There is't user with this Login :( \n Please try again...");
+                DecorateAdminTools();
             }
+
+
         }
-
-        public class User
-        {
-            public string Login { get; set; }
-            public string Name { get; set; }
-            public bool IsPremium { get; set; }
-        }
-
-        static void ShowAds()
-        {
-            Console.WriteLine("Посетите наш новый сайт с бесплатными играми free.games.for.a.fool.com");
-            // Остановка на 1 с
-            Thread.Sleep(1000);
-
-            Console.WriteLine("Купите подписку на МыКомбо и слушайте музыку везде и всегда.");
-            // Остановка на 2 с
-            Thread.Sleep(2000);
-
-            Console.WriteLine("Оформите премиум-подписку на наш сервис, чтобы не видеть рекламу.");
-            // Остановка на 3 с
-            Thread.Sleep(3000);
-        }
-
-        static User GetUserByLogin(string login)
-        {
-            var users = new List<User>()
-            {
-                new User { Login = "user1", Name = "Egor", IsPremium = true},
-                new User { Login = "user2", Name = "Gleb", IsPremium = false},
-                new User { Login = "admin", Name = "Administrator", IsPremium = true}
-            };
-            return users.Find(u => u.Login.ToLower() == login.ToLower());
-        }
-
-
     }
 }
