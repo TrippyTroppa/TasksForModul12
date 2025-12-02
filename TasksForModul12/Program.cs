@@ -11,29 +11,18 @@ namespace TasksForModul12
     {
         static void Main(string[] args)
         {
+           
         }
 
-        static void GetPageForUser(User user)
+        static int SearchIndex( int[] array, int element)
         {
-            if (!user.LoggedIn)
-                return;
-            Console.WriteLine("User logged in");
-
-            if (!user.HasAccessToSection)
-                return;
-            Console.WriteLine("User has access to that section");
-
-            if (user.HasUnseenNews)
+            int index;
+            for (index = 0; index < array.Length; index++)
             {
-                ShowNews();
+                if (array[index] > element)
+                    return index;
             }
-
-            if (user.HasAdminRights)
-            {
-                DecorateAdminTools();
-            }
-
-
+            return index;
         }
     }
 }
