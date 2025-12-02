@@ -12,17 +12,36 @@ namespace TasksForModul12
         static void Main(string[] args)
         {
            
+            int[] array = { 2, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            int value = 2;
+
+            int result = BinarySearch(value, array, 0, array.Length - 1);
+
+            if (result != -1)
+                Console.WriteLine($"Элемент {value} найден на позиции {result}");
+            else
+                Console.WriteLine($"Элемент {value} не найден в массиве");
         }
 
-        static int SearchIndex( int[] array, int element)
+        static int BinarySearch(int value, int[] array, int left, int right)
         {
-            int index;
-            for (index = 0; index < array.Length; index++)
+            while (left <= right)
             {
-                if (array[index] > element)
-                    return index;
+                var middle = (left + right) / 2;
+                var midElement = array[middle];
+
+                if (midElement == value)
+                    return middle;
+                else if (value > midElement)
+                {
+                    left = middle + 1;  
+                }
+                else
+                {
+                    right = middle - 1;
+                }
             }
-            return index;
+            return -1;
         }
     }
 }
