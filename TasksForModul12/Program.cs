@@ -13,21 +13,19 @@ namespace TasksForModul12
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<Testing>();
+            UseString(70000);
+            Console.WriteLine("Ready to switch");
+            Console.ReadKey();
 
-
+            UseStringBuilder(70000);
+            Console.ReadKey();
         }
 
-    }
-    public class Testing
-    {
-        static int Iterations = 10000;
-        [Benchmark]
-        public string UseString()
+        static string UseString(int n)
         {
             string value = "";
 
-            for (int i = 0; i < Iterations; i++)
+            for (int i = 0; i < n; i++)
             {
                 value += i.ToString();
                 value += " ";
@@ -36,12 +34,11 @@ namespace TasksForModul12
             return value;
         }
 
-        [Benchmark]
-        public string UseStringBuilder()
+        static string UseStringBuilder(int n)
         {
             StringBuilder builder = new StringBuilder();
 
-            for (int i = 0; i < Iterations; i++)
+            for (int i = 0; i < n; i++)
             {
                 builder.Append(i.ToString());
                 builder.Append(" ");
